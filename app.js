@@ -3,6 +3,10 @@ var app = express();
 app.get('/', function (req, res) {
   res.send('Hello World!');
 });
+app.get('/privacy', function (req, res) {
+  res.send('Privacy Policy!');
+});
+
 app.listen(process.env.PORT || 3000, function () {
   console.log('Example app listening on port 3000!');
 });
@@ -17,8 +21,4 @@ app.get('/webhook', function (req, res) {
   } else {
     res.send('Error, wrong validation token');
   }
-});
-
-app.get('/privacy', function (req, res) {
-  res.send('Please email adamjamesstevens@gmail.com for information');
 });
