@@ -18,3 +18,7 @@ app.get('/webhook', function (req, res) {
     res.send('Error, wrong validation token');
   }
 });
+
+app.get('/privacy', function (req, res) {
+  res.send('Please email adamjamesstevens@gmail.com for information');
+}
