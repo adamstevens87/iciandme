@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "app.js"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -16,9 +16,13 @@
   "bugs": {
     "url": "https://github.com/adamstevens87/iciandme/issues"
   },
-  "homepage": "https://github.com/adamstevens87/iciandme#readme",
   "dependencies": {
-    "express": "^4.15.2"
-  },
-  "devDependencies": {}
+    "body-parser": "^1.15.0",
+    "config": "^1.20.4",
+    "csv": "^1.1.1",
+    "ejs": "^2.4.2",
+    "express": "^4.13.4",
+    "mongojs": "^2.4.0",
+    "request": "^2.72.0"
+  }
 }
