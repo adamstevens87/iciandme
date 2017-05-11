@@ -24,5 +24,7 @@
     "express": "^4.15.2",
     "mongojs": "^2.4.0",
     "request": "^2.72.0"
-  }
+  },
+  "homepage": "https://github.com/adamstevens87/iciandme#readme",
+  "devDependencies": {}
 }
