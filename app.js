@@ -25,7 +25,10 @@ app.get('/webhook', function (req, res) {
 
 
 
+// Now that the subscription is completed, we need to listen for POST calls at our webhook.
+// All callbacks will be made to this webhook.
 
+In our sample app, we handle the all of them. For receiving messages, we look for the event.message field and call the receivedMessage function.
 app.post('/webhook', function (req, res) {
   var data = req.body;
 
