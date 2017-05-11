@@ -1,0 +1,7 @@
+{
+  "name": "ici",
+  "description": "Capture a Moment, make it a Memory",
+  "repository": "https://github.com/heroku/iciandme",
+  "keywords": ["node", "express", "heroku"],
+  "image": "heroku/nodejs"
+}
