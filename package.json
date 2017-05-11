@@ -18,5 +18,6 @@
   "homepage": "https://github.com/adamstevens87/iciandme#readme",
   "dependencies": {
     "express": "^4.15.2"
-  }
+  },
+  "devDependencies": {}
 }
