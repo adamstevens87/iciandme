@@ -8,9 +8,7 @@ app.listen(process.env.PORT || 3000, function () {
 });
 
 // Arbitrary value used to validate a webhook
-const VALIDATION_TOKEN = (process.env.MESSENGER_VALIDATION_TOKEN) ?
-  (process.env.MESSENGER_VALIDATION_TOKEN) :
-  config.get('validationToken');
+const VALIDATION_TOKEN = 'ici_and_me_verification';
 
 
 app.get('/webhook', function (req, res) {
