@@ -550,15 +550,29 @@ function sendTextMessage(recipientId, messageText) {
 
   var rhymeObject = checkKeyword(messageText);
 
+if (rhymeObject == messageText) {
   var messageData = {
     recipient: {
       id: recipientId
     },
     message: {
-      text: messageText + "and we got: " + rhymeObject,
+      text: messageText,
       metadata: "DEVELOPER_DEFINED_METADATA"
     }
   };
+} else {
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      text: "Rhyme Time! You said you want to rhyme: " + rhymeObject,
+      metadata: "DEVELOPER_DEFINED_METADATA"
+    }
+  };
+
+
+}
 
   callSendAPI(messageData);
 }
@@ -582,7 +596,9 @@ function checkKeyword(messageText){
 
   return messageArray;
 
- }
+} else {
+  return messageText;
+}
 
 
 
