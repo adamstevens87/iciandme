@@ -321,7 +321,7 @@ function getUserInfo(senderID) {
     request({
       url: "https://graph.facebook.com/v2.6/" + senderID,
       qs: {
-        access_token: process.env.PAGE_ACCESS_TOKEN,
+        access_token: PAGE_ACCESS_TOKEN,
         fields: "first_name"
       },
       method: "GET"
