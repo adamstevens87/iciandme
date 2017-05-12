@@ -319,12 +319,13 @@ function getUserInfo(senderID) {
 
   def get_sender_profile(sender)
   request = HTTParty.get(
-    ("https://graph.facebook.com/v2.6/" + senderID),
+    "https://graph.facebook.com/v2.6/#{sender[senderID]}",
     query: {
-      access_token: ENV[PAGE_ACCESS_TOKEN],
-      fields: 'first_name, last_name, profile_pic'
+      access_token: ENV['PAGE_ACCESS_TOKEN'],
+      fields: 'first_name,last_name,gender,profile_pic'
     }
   )
+
   request.parsed_response
 end
 
