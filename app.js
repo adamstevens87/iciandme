@@ -208,10 +208,12 @@ function receivedAuthentication(event) {
  */
 function receivedMessage(event) {
   var senderID = event.sender.id;
+  var firstName = event.sender.first_name;
   var recipientID = event.recipient.id;
   var timeOfMessage = event.timestamp;
   var message = event.message;
   var first_name = event.sender.first_name;
+  console.log(" Thank you %d", firstName);
 
   console.log("Received message for user %d and page %d at %d with message:",
     senderID, recipientID, timeOfMessage);
