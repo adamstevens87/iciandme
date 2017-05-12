@@ -315,8 +315,18 @@ function receivedMessage(event) {
 
 function getUserInfo(senderID) {
 
-  console.log("Testing and got it" + senderID);
+  console.log("Testing and got it " + senderID);
 
+  def get_sender_profile(sender)
+  request = HTTParty.get(
+    ("https://graph.facebook.com/v2.6/" + senderID),
+    query: {
+      access_token: ENV[PAGE_ACCESS_TOKEN],
+      fields: 'first_name, last_name, profile_pic'
+    }
+  )
+  request.parsed_response
+end
 
 }
 
