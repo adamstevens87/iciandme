@@ -312,10 +312,36 @@ function receivedMessage(event) {
         sendTextMessage(senderID, messageText);
     }
   } else if (messageAttachments) {
-
-    sendTextMessage(senderID, ("Message with attachment received, thanks " + senderID + "."));
+    getUserInfo(senderID);
+    //sendTextMessage(senderID, ("Message with attachment received, thanks " + senderID + "."));
   }
 }
+
+function getUserInfo(senderID) {
+
+  console.log("Testing and got it " + senderID);
+
+
+    request({
+      url: "https://graph.facebook.com/v2.6/" + senderID,
+      qs: {
+        access_token: PAGE_ACCESS_TOKEN,
+        fields: "first_name"
+      },
+      method: "GET"
+    }, function(error, response, body)
+      var greeting = "";
+      if (error) {
+        console.log("Error getting user's name: " +  error);
+      } else {
+        var bodyObj = JSON.parse(body);
+        var name = bodyObj.first_name;
+        greeting = "Hi " + name + ". ";
+      }
+      var message = greeting + "That's a very nice attachment. Send me some mooooore :)";
+      sendTextMessage(senderID, message);
+    });
+  }
 
 
 /*
@@ -522,9 +548,7 @@ function sendFileMessage(recipientId) {
  */
 function sendTextMessage(recipientId, messageText) {
 
-  var rhymeObject = checkKeyword(messageText);
 
-if (rhymeObject == messageText) {
   var messageData = {
     recipient: {
       id: recipientId
@@ -534,51 +558,11 @@ if (rhymeObject == messageText) {
       metadata: "DEVELOPER_DEFINED_METADATA"
     }
   };
-} else {
-  var messageData = {
-    recipient: {
-      id: recipientId
-    },
-    message: {
-      text: "Rhyme Time! You said you want to rhyme: " + rhymeObject,
-      metadata: "DEVELOPER_DEFINED_METADATA"
-    }
-  };
 
-
-}
 
   callSendAPI(messageData);
 }
 
-
-
-function checkKeyword(messageText){
-
-
- var n = messageText.search(/rhyme/i);
- console.log("StringParser: " + n);
-
- if(n >= 0) {
-
- var rhymeString = messageText.slice(n + 6);
- console.log("StringParser: " + rhymeString);
- var messageArray = rhymeString.split(" ");
-
-  console.log("StringParser: " + n);
-  console.log("StringParser: " + messageArray);
-
-  return messageArray;
-
-} else {
-  return messageText;
-}
-
-
-
-
-
-}
 
 /*
  * Send a button message using the Send API.
