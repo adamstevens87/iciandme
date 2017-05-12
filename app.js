@@ -334,7 +334,7 @@ function getUserInfo(senderID) {
         var name = bodyObj.first_name;
         greeting = "Hi " + name + ". ";
       }
-      var message = greeting + "My name is ici. That's a very nice attachment. Sed me some mooooore :)";
+      var message = greeting + "That's a very nice attachment. Send me some mooooore :)";
       sendTextMessage(senderID, message);
     });
   }
