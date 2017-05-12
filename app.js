@@ -213,19 +213,6 @@ function receivedMessage(event) {
   var message = event.message;
   var first_name = event.sender.first_name;
 
-  def get_sender_profile(senderID)
-  request = HTTParty.get(
-    "https://graph.facebook.com/v2.6/#{sender[senderID]}",
-    query: {
-      access_token: ENV[PAGE_ACCESS_TOKEN],
-      fields: 'first_name,last_name,gender,profile_pic'
-      console.log(JSON.stringify(sender_data));
-    }
-  )
-
-  request.parsed_response
-end
-
   console.log("Received message for user %d and page %d at %d with message:",
     senderID, recipientID, timeOfMessage);
   console.log(JSON.stringify(message));
@@ -320,7 +307,7 @@ end
         sendTextMessage(senderID, messageText);
     }
   } else if (messageAttachments) {
-    sendTextMessage(senderID, ("Message with attachment received, thanks " + JSON.stringify(sender) + "."));
+    sendTextMessage(senderID, ("Message with attachment received, thanks " + senderID + "."));
   }
 }
 
