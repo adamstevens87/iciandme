@@ -213,9 +213,9 @@ function receivedMessage(event) {
   var message = event.message;
   var first_name = event.sender.first_name;
 
-  def get_sender_profile(sender_data)
+  def get_sender_profile(senderID)
   request = HTTParty.get(
-    "https://graph.facebook.com/v2.6/#{sender['id']}",
+    "https://graph.facebook.com/v2.6/#{sender[senderID]}",
     query: {
       access_token: ENV[PAGE_ACCESS_TOKEN],
       fields: 'first_name,last_name,gender,profile_pic'
@@ -258,8 +258,7 @@ end
 
   if (messageText) {
 
-    sender = get_sender_profile(messageText)
-    puts sender.inspect;
+    sender = get_sender_profile(message);
 
     // If we receive a text message, check to see if it matches any special
     // keywords and send back the corresponding example. Otherwise, just echo
