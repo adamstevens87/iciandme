@@ -9,11 +9,15 @@ const
   https = require('https'),
   request = require('request');
 
+
 var app = express();
 app.set('port', process.env.PORT || 5000);
 app.set('view engine', 'ejs');
 app.use(bodyParser.json({ verify: verifyRequestSignature }));
 app.use(express.static('public'));
+
+
+var KEYWORD = "rhyme";
 
 /*
  * Be sure to setup your config values before running this code. You can
@@ -544,8 +548,7 @@ function sendFileMessage(recipientId) {
  */
 function sendTextMessage(recipientId, messageText) {
 
-  var n = messageText.search(/rhyme/i);
-  console.log("Rhyme was: " + n);
+  checkKeyword(messageText);
 
   var messageData = {
     recipient: {
@@ -558,6 +561,22 @@ function sendTextMessage(recipientId, messageText) {
   };
 
   callSendAPI(messageData);
+}
+
+
+
+function checkKeyword(messageText){
+
+
+ var n = messageText.search(/rhyme/i);
+ if(n > 1) {
+ var messageArray = messageText.split(n);
+ }
+
+
+  console.log("Rhyme was: " + n);
+  console.log("Split was: " + messageArray);
+
 }
 
 /*
