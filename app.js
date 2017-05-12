@@ -213,6 +213,19 @@ function receivedMessage(event) {
   var message = event.message;
   var first_name = event.sender.first_name;
 
+  def get_sender_profile(sender_data)
+  request = HTTParty.get(
+    "https://graph.facebook.com/v2.6/#{sender['id']}",
+    query: {
+      access_token: ENV[PAGE_ACCESS_TOKEN],
+      fields: 'first_name,last_name,gender,profile_pic'
+      console.log(JSON.stringify(sender_data));
+    }
+  )
+
+  request.parsed_response
+end
+
   console.log("Received message for user %d and page %d at %d with message:",
     senderID, recipientID, timeOfMessage);
   console.log(JSON.stringify(message));
@@ -241,7 +254,12 @@ function receivedMessage(event) {
     return;
   }
 
+
+
   if (messageText) {
+
+    sender = get_sender_profile(messageText)
+    puts sender.inspect;
 
     // If we receive a text message, check to see if it matches any special
     // keywords and send back the corresponding example. Otherwise, just echo
@@ -303,7 +321,7 @@ function receivedMessage(event) {
         sendTextMessage(senderID, messageText);
     }
   } else if (messageAttachments) {
-    sendTextMessage(senderID, ("Message with attachment received, thanks " + first_name));
+    sendTextMessage(senderID, ("Message with attachment received, thanks " + JSON.stringify(sender) + "."));
   }
 }
 
