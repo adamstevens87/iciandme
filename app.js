@@ -573,7 +573,7 @@ function checkKeyword(messageText){
 
  if(n > 1) {
 
- var rhymeString = messageText.slice(n + 4);
+ var rhymeString = messageText.slice(n + 5);
  console.log("StringParser: " + rhymeString);
  var messageArray = rhymeString.split(" ");
 
