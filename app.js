@@ -325,6 +325,7 @@ function getUserInfo(senderID) {
         fields: "first_name"
       },
       method: "GET"
+      console.log(request);
     }, function(error, response, body) {
       var greeting = "";
       if (error) {
