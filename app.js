@@ -570,7 +570,8 @@ function checkKeyword(messageText){
 
  var n = messageText.search(/rhyme/i);
  if(n > 1) {
- var messageArray = messageText.split(n);
+ var rhymeString = messageText.slice(n + 4);
+ var messageArray = rhymeString.split(" ");
  }
 
 
