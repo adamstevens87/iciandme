@@ -548,14 +548,14 @@ function sendFileMessage(recipientId) {
  */
 function sendTextMessage(recipientId, messageText) {
 
-  checkKeyword(messageText);
+  var rhymeObject = checkKeyword(messageText);
 
   var messageData = {
     recipient: {
       id: recipientId
     },
     message: {
-      text: messageText,
+      text: messageText + "and we got: " + rhymeObject,
       metadata: "DEVELOPER_DEFINED_METADATA"
     }
   };
@@ -573,12 +573,15 @@ function checkKeyword(messageText){
 
  if(n > 1) {
 
- var rhymeString = messageText.slice(n + 5);
+ var rhymeString = messageText.slice(n + 6);
  console.log("StringParser: " + rhymeString);
  var messageArray = rhymeString.split(" ");
 
   console.log("StringParser: " + n);
   console.log("StringParser: " + messageArray);
+
+  return messageArray;
+
  }
 
 
