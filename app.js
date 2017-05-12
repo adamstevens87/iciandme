@@ -309,7 +309,7 @@ function receivedMessage(event) {
     }
   } else if (messageAttachments) {
     getUserInfo(senderID);
-    sendTextMessage(senderID, ("Message with attachment received, thanks " + senderID + "."));
+    //sendTextMessage(senderID, ("Message with attachment received, thanks " + senderID + "."));
   }
 }
 
@@ -317,6 +317,30 @@ function getUserInfo(senderID) {
 
   console.log("Testing and got it " + senderID);
 
+
+
+function processPostback(event) {
+
+    request({
+      url: "https://graph.facebook.com/v2.6/" + senderId,
+      qs: {
+        access_token: process.env.PAGE_ACCESS_TOKEN,
+        fields: "first_name"
+      },
+      method: "GET"
+    }, function(error, response, body) {
+      var greeting = "";
+      if (error) {
+        console.log("Error getting user's name: " +  error);
+      } else {
+        var bodyObj = JSON.parse(body);
+        name = bodyObj.first_name;
+        greeting = "Hi " + name + ". ";
+      }
+      var message = greeting + "My name is SP Movie Bot. I can tell you various details regarding movies. What movie would you like to know about?";
+      sendTextMessage(senderId, {text: message});
+    });
+  }
 }
 
 /*
