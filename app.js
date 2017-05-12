@@ -318,9 +318,6 @@ function getUserInfo(senderID) {
   console.log("Testing and got it " + senderID);
 
 
-
-function processPostback(event) {
-
     request({
       url: "https://graph.facebook.com/v2.6/" + senderId,
       qs: {
@@ -341,7 +338,7 @@ function processPostback(event) {
       sendTextMessage(senderId, {text: message});
     });
   }
-}
+
 
 /*
  * Delivery Confirmation Event
