@@ -315,7 +315,7 @@ function receivedMessage(event) {
 
 function getUserInfo(senderID) {
 
-  console.lof("Testing and got it" + senderID);
+  console.log("Testing and got it" + senderID);
 
 
 }
