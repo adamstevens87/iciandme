@@ -543,6 +543,10 @@ function sendFileMessage(recipientId) {
  *
  */
 function sendTextMessage(recipientId, messageText) {
+
+  var n = str.search(/rhyme/i);
+  console.log("Rhyme was: " + n);
+
   var messageData = {
     recipient: {
       id: recipientId
