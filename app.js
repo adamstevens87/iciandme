@@ -325,7 +325,6 @@ function getUserInfo(senderID) {
         fields: "first_name"
       },
       method: "GET"
-      console.log(url);
     }, function(error, response, body) {
       var greeting = "";
       if (error) {
@@ -336,7 +335,7 @@ function getUserInfo(senderID) {
         greeting = "Hi " + name + ". ";
       }
       var message = greeting + "My name is ici. I can tell you various details regarding movies. What movie would you like to know about?";
-      sendTextMessage(senderID, {text: message});
+      sendTextMessage(senderID, message);
     });
   }
 
