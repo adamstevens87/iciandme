@@ -329,7 +329,7 @@ function getUserInfo(senderID) {
         fields: "first_name"
       },
       method: "GET"
-    }, function(error, response, body)
+    }, function(error, response, body) {
       var greeting = "";
       if (error) {
         console.log("Error getting user's name: " +  error);
@@ -559,10 +559,9 @@ function sendTextMessage(recipientId, messageText) {
     }
   };
 
-
   callSendAPI(messageData);
-}
 
+}
 
 /*
  * Send a button message using the Send API.
