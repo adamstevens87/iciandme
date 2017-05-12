@@ -319,7 +319,7 @@ function getUserInfo(senderID) {
 
 
     request({
-      url: "https://graph.facebook.com/v2.6/" + senderId,
+      url: "https://graph.facebook.com/v2.6/" + senderID,
       qs: {
         access_token: process.env.PAGE_ACCESS_TOKEN,
         fields: "first_name"
@@ -335,7 +335,7 @@ function getUserInfo(senderID) {
         greeting = "Hi " + name + ". ";
       }
       var message = greeting + "My name is SP Movie Bot. I can tell you various details regarding movies. What movie would you like to know about?";
-      sendTextMessage(senderId, {text: message});
+      sendTextMessage(senderID, {text: message});
     });
   }
 
